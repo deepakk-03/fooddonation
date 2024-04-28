@@ -29,7 +29,6 @@ function App() {
       <BrowserRouter>
       <Routes>
       
-        {/* USER */}
         
       <Route path="/" element={<HomePage/>}></Route>
       <Route path="/homePage" element={<HomePage/>}></Route>
@@ -39,13 +38,13 @@ function App() {
       <Route path="/ngoregistration" element={<Ngoregistration/>}></Route>
       <Route path="/donorregistratoin" element={<Donorregistratoin/>}></Route>
 
-      {/* DASHBOARD */}
+     
       <Route path="/admindashboard" element={<DashboardAdmin/>}></Route>
       <Route path="/ngoDashboard" element={<NgoDashboard/>}/>
       <Route path="/donorDashboard" element={<DonorDashboard/>}/>
       
 
-      {/* ADMIN */}
+      
       <Route path="/adminlogin" element={<Adminlogin/>}></Route>
       <Route path="/manageRequest" element={<ManageRequest/>}></Route>
       <Route path="/manageUsers" element={<ManageUsers/>}></Route>
