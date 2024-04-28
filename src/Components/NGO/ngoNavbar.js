@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function NgoNavbar() {
 
-  function handlelogout(e) {
+  function handleNGOlogout(e) {
     localStorage.clear();
   }
 
@@ -24,7 +24,7 @@ export default function NgoNavbar() {
                 <Link className="nav-link" to="/raiserequest">Raised Requests</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" onClick={handlelogout} to="/">Logout</Link>
+                <Link className="nav-link" onClick={handleNGOlogout} to="/">Logout</Link>
               </li>
             </ul>
           </div>
