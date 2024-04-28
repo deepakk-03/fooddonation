@@ -34,7 +34,7 @@ export default function Raiserequest() {
 
   useEffect(() => {
     if (user_id) {
-      getallclaim(user_id);
+      getallclaim();
     }
   }, [user_id]);
 
