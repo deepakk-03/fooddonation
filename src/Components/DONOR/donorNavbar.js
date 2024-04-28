@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function DonorNavbar() {
 
-  function handlelogout(e) {
+  function handleDonorlogout(e) {
     localStorage.clear();
   }
 
@@ -29,7 +29,7 @@ export default function DonorNavbar() {
                 <Link className="nav-link" to="/raiserequest">Raised Requests</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" onClick={handlelogout} to="/">Logout</Link>
+                <Link className="nav-link" onClick={handleDonorlogout} to="/">Logout</Link>
               </li>
             </ul>
           </div>
