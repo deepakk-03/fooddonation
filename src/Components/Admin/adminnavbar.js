@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function AdminNavbar() {
 
-  function handlelogout(e) {
+  function handleAdminlogout(e) {
     localStorage.clear();
   }
 
@@ -45,7 +45,7 @@ export default function AdminNavbar() {
                 <Link className="nav-link" to="/addAdmin">Add Admin</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" onClick={handlelogout} to="/login">Logout</Link>
+                <Link className="nav-link" onClick={handleAdminlogout} to="/login">Logout</Link>
               </li>
             </ul>
           </div>
