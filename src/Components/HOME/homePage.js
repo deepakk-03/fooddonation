@@ -15,12 +15,12 @@ export default function HomePage() {
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 2000);
-  
+
     return () => {
       clearInterval(intervalId); // Clean up the interval
     };
   }, [images.length]);
-  
+
 
   return (
     <div>

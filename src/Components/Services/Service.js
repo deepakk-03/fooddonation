@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const NGO_SERVICE_API_BASE_URL ="http://localhost:9070/ngos";
-const FOOD_DONATION_SERVICE_API_BASE_URL ="http://localhost:9060/food-donations";
-const SERVICE_REQUESTS_SERVICE_API_BASE_URL ="http://localhost:9080/service-requests";
-const USER_SERVICE_API_BASE_URL ="http://localhost:9090/user";
-const ADMIN_SERVICE_API_BASE_URL ="http://localhost:9050/admin";
+const NGO_SERVICE_API_BASE_URL = "http://localhost:9070/ngos";
+const FOOD_DONATION_SERVICE_API_BASE_URL = "http://localhost:9060/food-donations";
+const SERVICE_REQUESTS_SERVICE_API_BASE_URL = "http://localhost:9080/service-requests";
+const USER_SERVICE_API_BASE_URL = "http://localhost:9090/user";
+const ADMIN_SERVICE_API_BASE_URL = "http://localhost:9050/admin";
 
 
 // User Service
@@ -15,13 +15,14 @@ export const userSignup = (User) => {
 export const usernameAvailable = (username) => {
     return axios.get(USER_SERVICE_API_BASE_URL + '/checkusername/' + username);
 }
-export const userloginfunc= (LoginData) =>
-{
+export const userloginfunc = (LoginData) => {
     console.log(LoginData);
-    return axios.post(USER_SERVICE_API_BASE_URL+"/login",null, {params:{
-        "username":LoginData.username,
-        "password":LoginData.password
-    }});
+    return axios.post(USER_SERVICE_API_BASE_URL + "/login", null, {
+        params: {
+            "username": LoginData.username,
+            "password": LoginData.password
+        }
+    });
 }
 
 export const getUserById = (userId) => {
@@ -45,11 +46,11 @@ export const deleteUser = (userId) => {
 
 // Service Requests Service
 export const raiseServiceRequest = (ngoId, donationId, request) => {
-    return axios.post(SERVICE_REQUESTS_SERVICE_API_BASE_URL + '/raise/'+ ngoId + "/" + donationId, request);
+    return axios.post(SERVICE_REQUESTS_SERVICE_API_BASE_URL + '/raise/' + ngoId + "/" + donationId, request);
 }
 
 export const pendingRequest = () => {
-    return axios.get(SERVICE_REQUESTS_SERVICE_API_BASE_URL+ "/pendingRequest");
+    return axios.get(SERVICE_REQUESTS_SERVICE_API_BASE_URL + "/pendingRequest");
 }
 
 export const allRequests = () => {
@@ -82,19 +83,19 @@ export const allNgos = () => {
 }
 
 export const getNGOByName = (ngoName) => {
-    return axios.get(NGO_SERVICE_API_BASE_URL+ '/getNgo/'+ ngoName);
+    return axios.get(NGO_SERVICE_API_BASE_URL + '/getNgo/' + ngoName);
 }
 
 export const getNGOByUserId = (userId) => {
-    return axios.get(NGO_SERVICE_API_BASE_URL+ '/getNgoBy/'+ userId);
+    return axios.get(NGO_SERVICE_API_BASE_URL + '/getNgoBy/' + userId);
 }
 
 export const deleteNgo = (ngoId) => {
-    return axios.delete(NGO_SERVICE_API_BASE_URL+ '/' + ngoId);
+    return axios.delete(NGO_SERVICE_API_BASE_URL + '/' + ngoId);
 }
 
 // Food Donation Service
-export const registerFoodDonation = (foodDonation, userId ) => {
+export const registerFoodDonation = (foodDonation, userId) => {
     return axios.post(FOOD_DONATION_SERVICE_API_BASE_URL + "/create/" + userId, foodDonation);
 }
 
@@ -123,7 +124,7 @@ export const allDonations = () => {
 }
 
 export const deleteDonation = (donationId) => {
-    return axios.delete(FOOD_DONATION_SERVICE_API_BASE_URL+ '/' + donationId);
+    return axios.delete(FOOD_DONATION_SERVICE_API_BASE_URL + '/' + donationId);
 }
 
 // Admin Service
@@ -149,8 +150,10 @@ export const deleteAdmin = (adminId) => {
 
 export const authenticateAdmin = (LoginAdminData) => {
     console.log(LoginAdminData);
-    return axios.post(ADMIN_SERVICE_API_BASE_URL+"/authenticate",null, {params:{
-        "username":LoginAdminData.username,
-        "password":LoginAdminData.password
-    }});
+    return axios.post(ADMIN_SERVICE_API_BASE_URL + "/authenticate", null, {
+        params: {
+            "username": LoginAdminData.username,
+            "password": LoginAdminData.password
+        }
+    });
 }

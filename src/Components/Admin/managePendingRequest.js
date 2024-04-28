@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer ,toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import { approveRequest, pendingRequest, rejectRequest } from "../Services/Service";
 import Footer from '../User/Footer'
 import AdminNavbar from './adminnavbar'
@@ -12,7 +12,7 @@ export default function PendingRequest() {
 
   useEffect(() => {
     let id = localStorage.getItem("adminid");
-    
+
     if (!id) {
       navigate("/adminlogin");
     }
@@ -22,46 +22,41 @@ export default function PendingRequest() {
     }
   }, [navigate]);
 
-  async function getpendingRequest()
-  {
+  async function getpendingRequest() {
     const request = await pendingRequest();
     setRequestList(request.data);
   }
 
-  async function rejectRequestById(requestId)
-    {
-        console.log("inside rejectuserbyid");
-      try{
-        await rejectRequest(requestId);
-        toast.success("Request Rejected successful");
+  async function rejectRequestById(requestId) {
+    console.log("inside rejectuserbyid");
+    try {
+      await rejectRequest(requestId);
+      toast.success("Request Rejected successful");
 
-        getpendingRequest();
+      getpendingRequest();
 
-      }catch(err)
-      {
-        toast.error("Some error occured");
-      }
+    } catch (err) {
+      toast.error("Some error occured");
     }
+  }
 
-    async function approveRequestById(requestId)
-    {
-        console.log("inside approveRequestById");
-      try{
-        await approveRequest(requestId);
-        toast.success("Request Approved successful");
+  async function approveRequestById(requestId) {
+    console.log("inside approveRequestById");
+    try {
+      await approveRequest(requestId);
+      toast.success("Request Approved successful");
 
-        getpendingRequest();
+      getpendingRequest();
 
-      }catch(err)
-      {
-        toast.error("Some error occured");
-      }
+    } catch (err) {
+      toast.error("Some error occured");
     }
+  }
 
   return (
     <div>
       <ToastContainer />
-      <AdminNavbar/>
+      <AdminNavbar />
 
       <h3 className='text-center my-3 mt-5'>All Requests</h3>
       <div className="container table-responsive mt-3">
@@ -82,7 +77,7 @@ export default function PendingRequest() {
                   <tr key={request.id}>
                     <td>{request.requestId}</td>
                     <td>{request.ngoId}</td>
-                    <td>{request.status}</td>                    
+                    <td>{request.status}</td>
                     <td>{request.donationId}</td>
                     <td><button className='btn btn-success' onClick={() => approveRequestById(request.requestId)} type="button">Approve</button></td>
                     <td><button className='btn btn-warning' onClick={() => rejectRequestById(request.requestId)} type="button">Reject</button></td>

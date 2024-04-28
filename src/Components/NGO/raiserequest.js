@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import { toast, ToastContainer } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import { getFDescription, allRequests } from "../Services/Service"
 import Footer from '../User/Footer'
@@ -79,17 +78,12 @@ export default function Raiserequest() {
                     <td>{claim.donationId}</td>
                     <td><FoodDescriptionLoader itemId={claim.donationId}></FoodDescriptionLoader></td>
                     <td>{claim.status}</td>
-
-                    {/* <td><button className='btn btn-danger' onClick={()=>deleteClaimById(claim.Requestid)} type="button">Delete</button></td> */}
                   </tr>
               )
             }
           </tbody>
         </table>
       </div>
-
-
-
       <Footer />
     </div>
   )

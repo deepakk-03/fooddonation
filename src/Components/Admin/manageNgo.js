@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer ,toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import { allNgos, deleteNgo } from "../Services/Service";
 import Footer from '../User/Footer'
 import AdminNavbar from './adminnavbar'
@@ -12,7 +12,7 @@ export default function ManageNgo() {
 
   useEffect(() => {
     let id = localStorage.getItem("adminid");
-    
+
     if (!id) {
       navigate("/adminlogin");
     }
@@ -22,30 +22,27 @@ export default function ManageNgo() {
     }
   }, [navigate]);
 
-  async function getAllNgos()
-  {
+  async function getAllNgos() {
     const ngo = await allNgos();
     setNgoList(ngo.data);
   }
 
-  async function deleteNgoById(ngoId)
-    {
-        console.log("inside deleteuserbyid");
-      try{
-        await deleteNgo(ngoId);
-        toast.success("NGO delete successful");
-        getAllNgos();
+  async function deleteNgoById(ngoId) {
+    console.log("inside deleteuserbyid");
+    try {
+      await deleteNgo(ngoId);
+      toast.success("NGO delete successful");
+      getAllNgos();
 
-      }catch(err)
-      {
-        toast.error("Some error occured");
-      }
+    } catch (err) {
+      toast.error("Some error occured");
     }
+  }
 
   return (
     <div>
       <ToastContainer />
-      <AdminNavbar/>
+      <AdminNavbar />
 
       <h3 className='text-center my-3 mt-5'>All NGOs</h3>
       <div className="container table-responsive mt-3">

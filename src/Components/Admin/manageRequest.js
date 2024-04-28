@@ -5,12 +5,11 @@ import { deleteRequest, getFDescription, allRequests } from "../Services/Service
 import Footer from '../User/Footer'
 import AdminNavbar from './adminnavbar'
 
-async function getItemTitle(itemId)
-  {
-    const ItemDetails = await getFDescription(itemId);
-    console.log("Description:"+ItemDetails.data);
-    return ItemDetails.data;
-  }
+async function getItemTitle(itemId) {
+  const ItemDetails = await getFDescription(itemId);
+  console.log("Description:" + ItemDetails.data);
+  return ItemDetails.data;
+}
 
 export default function ManageRequest() {
   const navigate = useNavigate();
@@ -19,7 +18,7 @@ export default function ManageRequest() {
 
   useEffect(() => {
     let id = localStorage.getItem("adminid");
-    
+
     if (!id) {
       navigate("/adminlogin");
     }
@@ -29,29 +28,26 @@ export default function ManageRequest() {
     }
   }, [navigate]);
 
-  async function getAllRequests()
-  {
+  async function getAllRequests() {
     const request = await allRequests();
     setRequestList(request.data);
   }
 
-  async function deleteRequestById(requestId)
-    {
-      try{
-        await deleteRequest(requestId);
-        toast.success("Donation delete successful");
-        getAllRequests();
+  async function deleteRequestById(requestId) {
+    try {
+      await deleteRequest(requestId);
+      toast.success("Donation delete successful");
+      getAllRequests();
 
-      }catch(err)
-      {
-        toast.error("Some error occured");
-      }
+    } catch (err) {
+      toast.error("Some error occured");
     }
+  }
 
   return (
     <div>
       <ToastContainer />
-      <AdminNavbar/>
+      <AdminNavbar />
 
       <h3 className='text-center my-3 mt-5'>All Requests</h3>
       <div className="container table-responsive mt-3">
@@ -75,8 +71,8 @@ export default function ManageRequest() {
                     <td>{request.ngoId}</td>
                     <td>{request.donationId}</td>
                     <td><FoodDescriptionLoader itemId={request.donationId}></FoodDescriptionLoader></td>
-                    <td>{request.status}</td>    
-                    <td><button className='btn btn-danger' onClick={() => deleteRequestById(request.requestId)} type="button">Delete</button></td>                
+                    <td>{request.status}</td>
+                    <td><button className='btn btn-danger' onClick={() => deleteRequestById(request.requestId)} type="button">Delete</button></td>
                   </tr>
               )
             }
@@ -89,17 +85,16 @@ export default function ManageRequest() {
   )
 }
 
-function FoodDescriptionLoader({itemId})
-{
-  const [itemTitle,setItemTitle] = useState('');
+function FoodDescriptionLoader({ itemId }) {
+  const [itemTitle, setItemTitle] = useState('');
 
-  useEffect(()=>{
-    async function fetchItemTitle(){
-      const title  = await getItemTitle(itemId);
+  useEffect(() => {
+    async function fetchItemTitle() {
+      const title = await getItemTitle(itemId);
       setItemTitle(title);
     }
     fetchItemTitle();
-  },[itemId]);
+  }, [itemId]);
 
   // return itemTitle ? itemTitle : 'Loading...';
   return itemTitle;

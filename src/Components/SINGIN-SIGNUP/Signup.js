@@ -23,12 +23,12 @@ export default function Signup() {
     return emailRegex.test(email);
   };
 
-  
+
   const validatePassword = (password) => {
     const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     return passwordRegex.test(password);
   };
-  
+
   const validateMobileNumber = (number) => {
     const mobileRegex = /^[6789]\d{9}$/;
     return mobileRegex.test(number);
@@ -41,7 +41,7 @@ export default function Signup() {
       toast.error('Please enter a valid email address as the username.');
       return;
     }
-    
+
     if (!validatePassword(password)) {
       toast.error('Password must be strong (at least 8 characters, with uppercase, lowercase, and digits).');
       return;
@@ -80,7 +80,7 @@ export default function Signup() {
 
   return (
     <div>
-      <LoginNav/>
+      <LoginNav />
       <ToastContainer />
       <section className="bg-light py-3 py-md-5">
         <div className="container">
@@ -116,11 +116,8 @@ export default function Signup() {
                       </div>
                       <div className="col-12">
                         <div className="form-floating mb-3">
-                          {/* <input  name="userType" id="userType" value={userType} onChange={handleUserType} placeholder="User Type" required={true} /> */}
-                          {/* <label htmlFor="userType" className="form-label">User Type (DONOR/NGO)</label> */}
-
                           <select type="text" className="form-select" name="userType" id="userType" value={userType}
-                          onChange={handleUserType} placeholder="User Type" required={true}>
+                            onChange={handleUserType} placeholder="User Type" required={true}>
                             <option selected>User Type</option>
                             <option value="DONOR">DONOR</option>
                             <option value="NGO">NGO</option>

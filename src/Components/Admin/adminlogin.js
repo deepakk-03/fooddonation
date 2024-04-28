@@ -27,19 +27,19 @@ export default function Adminlogin() {
     try {
       const loginResponse = await authenticateAdmin(Logindata);
       console.log(loginResponse.data);
-      
-      
+
+
       if (loginResponse.data) {
         const adminExistsResponse = await getAdminByUsername(Logindata.username);
         console.log(adminExistsResponse.data.username);
-        
+
         adminId = adminExistsResponse.data.adminId;
         let username = adminExistsResponse.data.username;
         setUsername(adminExistsResponse.data.username);
-        
+
         localStorage.setItem('adminid', adminId);
         localStorage.setItem('username', username);
-        
+
         toast.success("Login Successful");
         setTimeout(() => {
           navigator("/admindashboard");
@@ -47,8 +47,8 @@ export default function Adminlogin() {
       }
     } catch (err) {
       console.log(err.response.data);
-      if (err.response.data === "No such admin"){
-          toast.error("Check Admin Credentials.");
+      if (err.response.data === "No such admin") {
+        toast.error("Check Admin Credentials.");
       }
     }
   }

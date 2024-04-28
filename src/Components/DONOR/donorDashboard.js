@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Footer from '../User/Footer'
-// import Navbar from '../Navbar'
 import DonorNavbar from './donorNavbar';
 import { getDonationById } from "../Services/Service";
 import { useNavigate } from 'react-router-dom';
@@ -93,7 +92,7 @@ export default function DonorDashboard() {
                     <td>{claim.donationId}</td>
                     <td>{claim.foodDescription}</td>
                     <td>{claim.location}</td>
-                    <td>{claim.pickupDate.slice(0,10)}</td>
+                    <td>{claim.pickupDate.slice(0, 10)}</td>
                     <td>{claim.status}</td>
 
                   </tr>

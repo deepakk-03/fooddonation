@@ -24,7 +24,7 @@ export default function NgoDashboard() {
       navigate("/login");
     }
   }, [navigate]);
-  
+
   let userIdforNGO = localStorage.getItem("userIdforNGO");
   console.log(userIdforNGO);
 
@@ -32,13 +32,13 @@ export default function NgoDashboard() {
   useEffect(() => {
 
     getNGOByUserId(userIdforNGO).then((response) => {
-      
-      if(response.data){
+
+      if (response.data) {
         setNgoId(response.data.ngoId);
         console.log(ngoId);
       } else {
-              toast.warn("Register your NGO First");
-              navigate("/ngoregistration");
+        toast.warn("Register your NGO First");
+        navigate("/ngoregistration");
       }
     }).catch(error => {
       console.log(error);

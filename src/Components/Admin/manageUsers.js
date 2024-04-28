@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer ,toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import { allUsers, deleteUser } from "../Services/Service";
 import Footer from '../User/Footer'
 import AdminNavbar from './adminnavbar'
@@ -12,7 +12,7 @@ export default function ManageUsers() {
 
   useEffect(() => {
     let id = localStorage.getItem("adminid");
-    
+
     if (!id) {
       navigate("/adminlogin");
     }
@@ -22,30 +22,27 @@ export default function ManageUsers() {
     }
   }, [navigate]);
 
-  async function getAllUsers()
-  {
+  async function getAllUsers() {
     const users = await allUsers();
     setUserList(users.data);
   }
 
-  async function deleteUserById(userId)
-    {
-        console.log("inside deleteuserbyid");
-      try{
-        await deleteUser(userId);
-        toast.success("User delete successful");
-        getAllUsers();
+  async function deleteUserById(userId) {
+    console.log("inside deleteuserbyid");
+    try {
+      await deleteUser(userId);
+      toast.success("User delete successful");
+      getAllUsers();
 
-      }catch(err)
-      {
-        toast.error("Some error occured");
-      }
+    } catch (err) {
+      toast.error("Some error occured");
     }
+  }
 
   return (
     <div>
       <ToastContainer />
-      <AdminNavbar/>
+      <AdminNavbar />
 
       <h3 className='text-center my-3 mt-5'>All Users</h3>
       <div className="container table-responsive mt-3">
